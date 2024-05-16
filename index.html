@@ -125,9 +125,10 @@
                                     <i class="fa-solid fa-circle-notch"></i>
                                 </div>
                                 <div class="col-8">
-                                    <input class="my_input" type="text" placeholder="Scrivi messaggio">
+                                    <input class="my_input" type="text" placeholder="Scrivi messaggio"
+                                        v-model="inputValue" @keyup.enter="dinamicMessage()">
                                 </div>
-                                <div class="col-2 text-center">
+                                <div class=" col-2 text-center">
                                     <i class="fa-solid fa-circle-notch"></i>
                                 </div>
                             </div>

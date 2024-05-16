@@ -5,7 +5,8 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
-			contactActive: "",
+			inputValue: "",
+			contactActive: 0,
 			me: { name: "Davide", avatar: "https://i.pravatar.cc/400" },
 			contacts: [
 				{
@@ -180,6 +181,19 @@ createApp({
 	methods: {
 		makeActive(index) {
 			this.contactActive = index;
+		},
+		dinamicMessage() {
+			this.contacts[this.contactActive].messages.push({
+				message: this.inputValue,
+				status: "sent",
+			});
+			this.inputValue = "";
+			setTimeout(() => {
+				this.contacts[this.contactActive].messages.push({
+					message: "Ok",
+					status: "received",
+				});
+			}, 1000);
 		},
 	},
 	mounted() {},
