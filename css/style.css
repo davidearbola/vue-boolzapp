@@ -1,0 +1,68 @@
+.my_div_bg {
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(to top, #dcdbd3 0% 80%, #409789 80%);
+}
+
+.my_div_container {
+	width: 1000px;
+	height: calc(100vh - 2rem);
+	margin: 0 auto;
+}
+
+.my_header_column {
+	height: 4rem;
+	background-color: #eaeaea;
+}
+
+.my_h_4 {
+	height: 4rem;
+}
+
+.my_h_3 {
+	height: 3rem;
+}
+
+.my_body_contact {
+	height: calc(100% - 11rem);
+}
+
+.my_body_message {
+	height: calc(100% - 8rem);
+	background-image: url("../img/mine.jpg");
+}
+
+.my_footer_message {
+	height: 4rem;
+	background-color: #eaeaea;
+}
+
+img {
+	height: 3rem;
+	aspect-ratio: 1;
+	border-radius: 50%;
+}
+
+.my_input {
+	width: 100%;
+}
+
+span {
+	font-size: 12px;
+}
+
+.my_name {
+	font-size: 14px;
+}
+
+.my_bg_blue {
+	background-color: #8edafa;
+}
+
+.my_bg_light_grey {
+	background-color: #fafafa;
+}
+
+.my_bg_green {
+	background-color: #d5f9ba;
+}

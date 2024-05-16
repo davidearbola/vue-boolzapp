@@ -27,7 +27,118 @@
 <body>
     <!-- Div per Vue JS -->
     <div id="app">
-        <h1>{{message}}</h1>
+        <!-- background -->
+        <div class="my_div_bg pt-3 pb-3">
+            <!-- container app -->
+            <div class="my_div_container">
+                <div class="row h-100">
+                    <!-- colonna sinistra -->
+                    <div class="col-4 h-100 p-0">
+                        <!-- header -->
+                        <div class="my_header_column row justify-content-between m-0">
+                            <div class="col-2 d-flex align-items-center">
+                                <img :src="me.avatar" alt="">
+                                <span class="ms-1 my_name">{{me.name}}</span>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-between">
+                                <i class="fa-solid fa-circle-notch"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        <!-- avviso notifiche -->
+                        <div class="my_h_4 my_bg_blue row justify-content-between m-0">
+                            <div class="col-2 d-flex align-items-center">
+                                <img src="./img/Placeholder_view_vector.svg.png" alt="">
+                            </div>
+                            <div class="col-10 d-flex align-items-center">
+                                <span class="m-0">Lorem ipsum, dolor sit amet <br>consectetur adipisicing.</span>
+                            </div>
+                        </div>
+                        <!-- input search -->
+                        <div class="my_h_3 my_bg_light_grey  p-2">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <!-- sezione contatti -->
+                        <div class="my_body_contact bg-white overflow-auto">
+                            <div v-for="elemento,i in contacts" class="row m-0">
+                                <div class="col-2 p-2">
+                                    <img :src="contacts[i].avatar" alt="">
+                                </div>
+                                <div class="col-8 p-2">
+                                    <span class="my_name">{{contacts[i].name}}</span><br>
+                                    <span>Lorem ipsum dolor sit amet.</span>
+                                </div>
+                                <div class="col-2 p-2">
+                                    <span>ora</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- colonna destra -->
+                    <div class="col-8 h-100  bg-danger p-0">
+                        <!-- header -->
+                        <div class="my_header_column">
+                            <div class="row m-0 align-items-center justify-content-between">
+                                <div class="col-6 row">
+                                    <div class="col-2 p-2">
+                                        <img src="./img/Placeholder_view_vector.svg.png" alt="">
+                                    </div>
+                                    <div class="col-10 p-2">
+                                        <span class="my_name">Nome</span><br>
+                                        <span>Lorem ipsum dolor sit amet.</span>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-2 d-flex justify-content-between">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                    <i class="fa-solid fa-message"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- body message -->
+                        <div class="my_body_message overflow-auto p-4">
+                            <div class="d-flex justify-content-end mb-2">
+                                <div class="col-5 my_bg_green p-2 position-relative rounded">
+                                    <span>Lorem ipsum dolor sit</span>
+                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-2">
+                                <div class="col-5 my_bg_green p-2 position-relative rounded">
+                                    <span>Lorem ipsum dolor sit</span>
+                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-2">
+                                <div class="col-5 bg-white p-2 position-relative rounded">
+                                    <span>Lorem ipsum dolor sit</span>
+                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- footer message -->
+                        <div class="my_footer_message">
+                            <div class="d-flex align-items-center h-100">
+                                <div class="col-2 text-center">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                </div>
+                                <div class="col-8">
+                                    <input class="my_input" type="text" placeholder="Scrivi messaggio">
+                                </div>
+                                <div class="col-2 text-center">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- My JS -->
     <script src="./js/main.js"></script>
