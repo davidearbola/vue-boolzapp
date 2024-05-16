@@ -65,7 +65,7 @@
                         </div>
                         <!-- sezione contatti -->
                         <div class="my_body_contact bg-white overflow-auto">
-                            <div v-for="elemento,i in contacts" class="row m-0">
+                            <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
                                 <div class="col-2 p-2">
                                     <img :src="contacts[i].avatar" alt="">
                                 </div>
@@ -80,18 +80,20 @@
                         </div>
                     </div>
                     <!-- colonna destra -->
-                    <div class="col-8 h-100  bg-danger p-0">
+                    <div class="col-8 h-100 p-0">
                         <!-- header -->
                         <div class="my_header_column">
                             <div class="row m-0 align-items-center justify-content-between">
                                 <div class="col-6 row">
-                                    <div class="col-2 p-2">
-                                        <img src="./img/Placeholder_view_vector.svg.png" alt="">
-                                    </div>
-                                    <div class="col-10 p-2">
-                                        <span class="my_name">Nome</span><br>
-                                        <span>Lorem ipsum dolor sit amet.</span>
-                                    </div>
+                                    <template v-for="elemento, i in contacts">
+                                        <div v-if="i == contactActive" class="col-2 p-2">
+                                            <img :src="elemento.avatar" alt="">
+                                        </div>
+                                        <div v-if="i == contactActive" class="col-10 p-2">
+                                            <span class="my_name">{{elemento.name}}</span><br>
+                                            <span>Lorem ipsum dolor sit amet.</span>
+                                        </div>
+                                    </template>
                                 </div>
                                 <div class="col-2 p-2 d-flex justify-content-between">
                                     <i class="fa-solid fa-circle-notch"></i>
@@ -102,24 +104,19 @@
                         </div>
                         <!-- body message -->
                         <div class="my_body_message overflow-auto p-4">
-                            <div class="d-flex justify-content-end mb-2">
-                                <div class="col-5 my_bg_green p-2 position-relative rounded">
-                                    <span>Lorem ipsum dolor sit</span>
-                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end mb-2">
-                                <div class="col-5 my_bg_green p-2 position-relative rounded">
-                                    <span>Lorem ipsum dolor sit</span>
-                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-start mb-2">
-                                <div class="col-5 bg-white p-2 position-relative rounded">
-                                    <span>Lorem ipsum dolor sit</span>
-                                    <span class="position-absolute bottom-0 end-0 me-1">ora</span>
-                                </div>
-                            </div>
+                            <template v-for="elemento, index in contacts">
+                                <template v-for="sottoElemento, sottoIndex in elemento.messages">
+                                    <div v-if="index == contactActive"
+                                        :class="{'justify-content-end': sottoElemento.status == 'sent'}"
+                                        class="d-flex mb-2">
+                                        <div :class="{'my_bg_green': sottoElemento.status == 'sent', 'bg-white': sottoElemento.status == 'received' }"
+                                            class="col-5 p-2 position-relative rounded">
+                                            <span>{{sottoElemento.message}}</span>
+                                            <span class="position-absolute bottom-0 end-0 me-1">ora</span>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
                         </div>
                         <!-- footer message -->
                         <div class="my_footer_message">
