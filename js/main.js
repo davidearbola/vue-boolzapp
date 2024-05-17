@@ -5,6 +5,8 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
+			stringaSearch: false,
+			inputSearchValue: null,
 			inputValue: "",
 			contactActive: 0,
 			me: { name: "Davide", avatar: "https://i.pravatar.cc/400" },
@@ -223,9 +225,17 @@ createApp({
 			const time = today.getHours() + ":" + today.getMinutes();
 			return time;
 		},
+		searchContact() {
+			for (let i = 0; i < this.contacts.length; i++) {
+				this.contacts[i].visible = false;
+				this.stringaSearch = this.contacts[i].name.includes(
+					this.inputSearchValue
+				);
+				if (this.stringaSearch == true) {
+					this.contacts[i].visible = true;
+				}
+			}
+		},
 	},
-	mounted() {
-		this.getNow();
-		console.log(this.getNow());
-	},
+	mounted() {},
 }).mount("#app");
