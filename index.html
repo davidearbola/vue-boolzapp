@@ -71,10 +71,17 @@
                                 </div>
                                 <div class="col-8 p-2">
                                     <span class="my_name">{{contacts[i].name}}</span><br>
-                                    <span>Lorem ipsum dolor sit amet.</span>
+                                    <!-- <template v-for="sottoElemento, sottoIndex in elemento.messages">
+                                         <span>{{console.log(elemento.messages.length)}}</span>
+                                        <span
+                                            v-if="sottoIndex == contactActive">{{elemento.messages[elemento.messages.length-1].message}}
+                                        </span>
+                                    </template>  -->
+                                    <span>{{elemento.messages[elemento.messages.length-1].message}}</span>
                                 </div>
                                 <div class="col-2 p-2">
-                                    <span>ora</span>
+                                    <span
+                                        class="my_text_hour">{{elemento.messages[elemento.messages.length-1].hour}}</span>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +98,9 @@
                                         </div>
                                         <div v-if="i == contactActive" class="col-10 p-2">
                                             <span class="my_name">{{elemento.name}}</span><br>
-                                            <span>Lorem ipsum dolor sit amet.</span>
+                                            <span>Ultimo accesso:
+                                                {{elemento.messages[elemento.messages.length-1].date}}
+                                                {{elemento.messages[elemento.messages.length-1].hour}}</span>
                                         </div>
                                     </template>
                                 </div>
@@ -112,7 +121,8 @@
                                         <div :class="{'my_bg_green': sottoElemento.status == 'sent', 'bg-white': sottoElemento.status == 'received' }"
                                             class="col-5 p-2 position-relative rounded">
                                             <span>{{sottoElemento.message}}</span>
-                                            <span class="position-absolute bottom-0 end-0 me-1">ora</span>
+                                            <span
+                                                class="position-absolute bottom-0 end-0 me-1 my_text_hour">{{sottoElemento.hour}}</span>
                                         </div>
                                     </div>
                                 </template>
