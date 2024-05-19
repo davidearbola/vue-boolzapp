@@ -5,8 +5,8 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
-			// stringaSearch: false,
-			inputSearchValue: "",
+			stringaSearch: false,
+			inputSearchValue: null,
 			inputValue: "",
 			contactActive: 0,
 			me: { name: "Davide", avatar: "https://i.pravatar.cc/400" },
@@ -204,6 +204,7 @@ createApp({
 	methods: {
 		makeActive(index) {
 			this.contactActive = index;
+			console.log(this.contactActive);
 		},
 		dinamicMessage() {
 			this.contacts[this.contactActive].messages.push({
@@ -225,26 +226,29 @@ createApp({
 			const time = today.getHours() + ":" + today.getMinutes();
 			return time;
 		},
-		// searchContact() {
-		// 	for (let i = 0; i < this.contacts.length; i++) {
-		// 		this.contacts[i].visible = false;
-		// 		this.stringaSearch = this.contacts[i].name.includes(
-		// 			this.inputSearchValue
-		// 		);
-		// 		if (this.stringaSearch == true) {
-		// 			this.contacts[i].visible = true;
-		// 		}
-		// 	}
-		// },
-	},
-	computed: {
-		filteredSearch: function () {
-			return this.contacts.filter((elemento) => {
-				return elemento.name
-					.toLowerCase()
-					.match(this.inputSearchValue.toLowerCase());
-			});
+		searchContact() {
+			for (let i = 0; i < this.contacts.length; i++) {
+				this.contacts[i].visible = false;
+				this.stringaSearch = this.contacts[i].name.includes(
+					this.inputSearchValue
+				);
+				if (this.stringaSearch == true) {
+					this.contacts[i].visible = true;
+				}
+			}
+		},
+		lastMsg(elemento) {
+			return elemento.messages.length - 1;
 		},
 	},
+	// computed: {
+	// 	filteredSearch: function () {
+	// 		return this.contacts.filter((elemento) => {
+	// 			return elemento.name
+	// 				.toLowerCase()
+	// 				.match(this.inputSearchValue.toLowerCase());
+	// 		});
+	// 	},
+	// },
 	mounted() {},
 }).mount("#app");

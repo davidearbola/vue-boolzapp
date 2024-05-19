@@ -60,42 +60,41 @@
                             <div class="input-group input-group-sm">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm" v-model="inputSearchValue">
+                                    aria-describedby="inputGroup-sizing-sm" v-model="inputSearchValue"
+                                    @keyup.enter="searchContact()">
                             </div>
                         </div>
                         <!-- sezione contatti -->
-                        <!-- <div class="my_body_contact bg-white overflow-auto">
+                        <div class="my_body_contact bg-white overflow-auto">
                             <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
-                                <template v-if="contacts[i].visible == true">
+                                <template v-if="elemento.visible == true">
                                     <div class="col-2 p-2">
-                                        <img :src="contacts[i].avatar" alt="">
+                                        <img :src="elemento.avatar" alt="">
                                     </div>
                                     <div class="col-8 p-2">
-                                        <span class="my_name">{{contacts[i].name}}</span><br>
-                                        <span>{{elemento.messages[elemento.messages.length-1].message}}</span>
+                                        <span class="my_name">{{elemento.name}}</span><br>
+                                        <span>{{elemento.messages[lastMsg()].message}}</span>
                                     </div>
                                     <div class="col-2 p-2">
-                                        <span
-                                            class="my_text_hour">{{elemento.messages[elemento.messages.length-1].hour}}</span>
+                                        <span class="my_text_hour">{{elemento.messages[lastMsg()].hour}}</span>
                                     </div>
                                 </template>
                             </div>
-                        </div> -->
-                        <div class="my_body_contact bg-white overflow-auto">
-                            <div v-for="elemento,i in filteredSearch" @click="makeActive(i)" class="row m-0">
+                        </div>
+                        <!-- <div class="my_body_contact bg-white overflow-auto">
+                            <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
                                 <div class="col-2 p-2">
                                     <img :src="elemento.avatar" alt="">
                                 </div>
                                 <div class="col-8 p-2">
                                     <span class="my_name">{{elemento.name}}</span><br>
-                                    <span>{{elemento.messages[elemento.messages.length-1].message}}</span>
+                                    <span>{{elemento.messages[lastMsg(elemento)].message}}</span>
                                 </div>
                                 <div class="col-2 p-2">
-                                    <span
-                                        class="my_text_hour">{{elemento.messages[elemento.messages.length-1].hour}}</span>
+                                    <span class="my_text_hour">{{elemento.messages[lastMsg(elemento)].hour}}</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- colonna destra -->
                     <div class="col-8 h-100 p-0">
@@ -110,8 +109,8 @@
                                         <div v-if="i == contactActive" class="col-10 p-2">
                                             <span class="my_name">{{elemento.name}}</span><br>
                                             <span>Ultimo accesso:
-                                                {{elemento.messages[elemento.messages.length-1].date}}
-                                                {{elemento.messages[elemento.messages.length-1].hour}}</span>
+                                                {{lastMsg()].date}}
+                                                {{lastMsg()].hour}}</span>
                                         </div>
                                     </template>
                                 </div>
