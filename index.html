@@ -60,12 +60,11 @@
                             <div class="input-group input-group-sm">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm" v-model="inputSearchValue"
-                                    @keyup.enter="searchContact()">
+                                    aria-describedby="inputGroup-sizing-sm" v-model="inputSearchValue">
                             </div>
                         </div>
                         <!-- sezione contatti -->
-                        <div class="my_body_contact bg-white overflow-auto">
+                        <!-- <div class="my_body_contact bg-white overflow-auto">
                             <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
                                 <template v-if="contacts[i].visible == true">
                                     <div class="col-2 p-2">
@@ -80,6 +79,21 @@
                                             class="my_text_hour">{{elemento.messages[elemento.messages.length-1].hour}}</span>
                                     </div>
                                 </template>
+                            </div>
+                        </div> -->
+                        <div class="my_body_contact bg-white overflow-auto">
+                            <div v-for="elemento,i in filteredSearch" @click="makeActive(i)" class="row m-0">
+                                <div class="col-2 p-2">
+                                    <img :src="elemento.avatar" alt="">
+                                </div>
+                                <div class="col-8 p-2">
+                                    <span class="my_name">{{elemento.name}}</span><br>
+                                    <span>{{elemento.messages[elemento.messages.length-1].message}}</span>
+                                </div>
+                                <div class="col-2 p-2">
+                                    <span
+                                        class="my_text_hour">{{elemento.messages[elemento.messages.length-1].hour}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
