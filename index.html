@@ -73,10 +73,10 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <span class="my_name">{{elemento.name}}</span><br>
-                                        <span>{{elemento.messages[lastMsg()].message}}</span>
+                                        <span>{{elemento.messages[lastMsg(elemento)].message}}</span>
                                     </div>
                                     <div class="col-2 p-2">
-                                        <span class="my_text_hour">{{elemento.messages[lastMsg()].hour}}</span>
+                                        <span class="my_text_hour">{{elemento.messages[lastMsg(elemento)].hour}}</span>
                                     </div>
                                 </template>
                             </div>
@@ -109,8 +109,8 @@
                                         <div v-if="i == contactActive" class="col-10 p-2">
                                             <span class="my_name">{{elemento.name}}</span><br>
                                             <span>Ultimo accesso:
-                                                {{lastMsg()].date}}
-                                                {{lastMsg()].hour}}</span>
+                                                {{elemento.messages[lastMsg(elemento)].date}}
+                                                {{elemento.messages[lastMsg(elemento)].hour}}</span>
                                         </div>
                                     </template>
                                 </div>
