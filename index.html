@@ -41,24 +41,31 @@
                                 <span class="ms-1 my_name">{{me.name}}</span>
                             </div>
                             <div class="col-3 d-flex align-items-center justify-content-between">
-                                <i class="fa-solid fa-circle-notch"></i>
+                                <i @click="removeClass()" class="fa-solid fa-plus"></i>
                                 <i class="fa-solid fa-message"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
                         <!-- avviso notifiche -->
                         <div class="my_h_4 my_bg_blue row justify-content-between m-0">
-                            <div class="col-2 d-flex align-items-center">
-                                <img src="./img/Placeholder_view_vector.svg.png" alt="">
+                            <div class="col-2 d-flex align-items-center justify-content-center">
+                                <div class="p-2 my_icon_notify">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </div>
                             </div>
                             <div class="col-10 d-flex align-items-center">
-                                <span class="m-0">Lorem ipsum, dolor sit amet <br>consectetur adipisicing.</span>
+                                <span class="m-0">Ricevi notifiche di nuovi messaggi <br><span
+                                        class="my_underline">Attiva
+                                        notifiche
+                                        desktop</span>
+                                    </consectetur>
                             </div>
                         </div>
                         <!-- input search -->
                         <div class="my_h_3 my_bg_light_grey  p-2">
                             <div class="input-group input-group-sm">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                                <span class="input-group-text" id="inputGroup-sizing-sm"><i
+                                        class="fa-solid fa-magnifying-glass"></i></span>
                                 <input type="text" class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-sm" v-model="inputSearchValue"
                                     @keyup.enter="searchContact()">
@@ -83,17 +90,20 @@
                                 </template>
                             </div>
                         </div>
+                        <!-- versione computed -->
                         <!-- <div class="my_body_contact bg-white overflow-auto">
-                            <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
+                            <div v-for="elemento,i in filteredSearch" @click="makeActive(i)" class="row m-0">
                                 <div class="col-2 p-2">
                                     <img :src="elemento.avatar" alt="">
                                 </div>
                                 <div class="col-8 p-2">
                                     <span class="my_name">{{elemento.name}}</span><br>
-                                    <span>{{elemento.messages[lastMsg(elemento)].message}}</span>
+                                    <span
+                                        v-if="elemento.messages.length > 0">{{elemento.messages[lastMsg(elemento)].message}}</span>
                                 </div>
                                 <div class="col-2 p-2">
-                                    <span class="my_text_hour">{{elemento.messages[lastMsg(elemento)].hour}}</span>
+                                    <span v-if="elemento.messages.length > 0"
+                                        class="my_text_hour">{{elemento.messages[lastMsg(elemento)].hour}}</span>
                                 </div>
                             </div>
                         </div> -->
@@ -117,8 +127,8 @@
                                     </template>
                                 </div>
                                 <div class="col-2 p-2 d-flex justify-content-between">
-                                    <i class="fa-solid fa-circle-notch"></i>
-                                    <i class="fa-solid fa-message"></i>
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <i class="fa-solid fa-paperclip fa-rotate-90"></i>
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </div>
                             </div>
@@ -150,21 +160,33 @@
                         <!-- footer message -->
                         <div class="my_footer_message">
                             <div class="d-flex align-items-center h-100">
-                                <div class="col-2 text-center">
-                                    <i class="fa-solid fa-circle-notch"></i>
+                                <div class="col-1 text-center">
+                                    <i class="fa-regular fa-face-smile"></i>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-9">
                                     <input class="my_input" type="text" placeholder="Scrivi messaggio"
                                         v-model="inputValue" @keyup.enter="dinamicMessage()">
                                 </div>
-                                <div class=" col-2 text-center">
-                                    <i class="fa-solid fa-circle-notch"></i>
+                                <div class=" col-1 text-center">
+                                    <i class="fa-solid fa-paper-plane" @click="dinamicMessage()"></i>
+                                </div>
+                                <div class=" col-1 text-center">
+                                    <i class="fa-solid fa-microphone"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div :class="classeNone" class="my_box_add_contact">
+            <div id="add_contact">
+                <h2 class="mb-2">Aggiungi nuovo contatto</h2>
+                <label for="contact_name">Nome</label><br>
+                <input v-model="newContactInput" id="contact_name" class="mb-2" type="text"><br>
+                <button @click="newContact()" class="btn btn-success">Aggiungi</button>
+            </div>
+            <i @click="addClass()" class="fa-solid fa-xmark"></i>
         </div>
     </div>
     <!-- My JS -->

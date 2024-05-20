@@ -5,6 +5,8 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
+			classeNone: "d-none",
+			newContactInput: "",
 			selectedMessage: {
 				index: null,
 				sottoIndex: null,
@@ -219,7 +221,7 @@ createApp({
 			this.inputValue = "";
 			setTimeout(() => {
 				this.contacts[this.contactActive].messages.push({
-					message: "Ok",
+					message: "Sta' senza pensier",
 					status: "received",
 					hour: this.getNow(),
 				});
@@ -233,9 +235,9 @@ createApp({
 		searchContact() {
 			for (let i = 0; i < this.contacts.length; i++) {
 				this.contacts[i].visible = false;
-				this.stringaSearch = this.contacts[i].name.includes(
-					this.inputSearchValue
-				);
+				this.stringaSearch = this.contacts[i].name
+					.toLowerCase()
+					.includes(this.inputSearchValue.toLowerCase());
 				if (this.stringaSearch == true) {
 					this.contacts[i].visible = true;
 				}
@@ -255,6 +257,22 @@ createApp({
 		deleteMessage(index, sottoIndex) {
 			this.contacts[index].messages.splice(sottoIndex, 1);
 			this.clearSelectedMessage();
+		},
+		newContact() {
+			this.contacts.push({
+				name: this.newContactInput,
+				avatar: "./img/avatar_7.jpg",
+				visible: true,
+				messages: [],
+			});
+			this.classeNone = "d-none";
+			this.newContactInput = "";
+		},
+		addClass() {
+			this.classeNone = "d-none";
+		},
+		removeClass() {
+			this.classeNone = "";
 		},
 	},
 	// computed: {
