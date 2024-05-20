@@ -208,10 +208,11 @@ createApp({
 		};
 	},
 	methods: {
+		// metodo per impostare al click l'indice corrente alla chat cliccata
 		makeActive(index) {
 			this.contactActive = index;
-			console.log(this.contactActive);
 		},
+		// metodo per inviare i nuovi messaggi pushandoli in contacts e con timeout avere la risposta automatica sempre pushata
 		dinamicMessage() {
 			this.contacts[this.contactActive].messages.push({
 				message: this.inputValue,
@@ -227,11 +228,13 @@ createApp({
 				});
 			}, 1000);
 		},
+		// metodo per prendere l'orario corrente all'invio del messaggio
 		getNow() {
 			const today = new Date();
 			const time = today.getHours() + ":" + today.getMinutes();
 			return time;
 		},
+		// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati
 		searchContact() {
 			for (let i = 0; i < this.contacts.length; i++) {
 				this.contacts[i].visible = false;
@@ -243,21 +246,26 @@ createApp({
 				}
 			}
 		},
+		// metodo per prendere l'ultimo elemento/oggetto di un array
 		lastMsg(elemento) {
 			return elemento.messages.length - 1;
 		},
+		// metodo per assegnare l'indice del messaggio cliccato per far apparire il piccolo box per l'eliminazione dei messaggi
 		selectMessage(index, sottoIndex) {
 			this.selectedMessage.index = index;
 			this.selectedMessage.sottoIndex = sottoIndex;
 		},
+		// metodo per pulire il valore dei messaggi selezionati
 		clearSelectedMessage() {
 			this.selectedMessage.index = null;
 			this.selectedMessage.sottoIndex = null;
 		},
+		// metodo per eliminare dall'array il messaggio selezionato e quindi cancellarlo dalla chat
 		deleteMessage(index, sottoIndex) {
 			this.contacts[index].messages.splice(sottoIndex, 1);
 			this.clearSelectedMessage();
 		},
+		// metodo per creare un nuovo contatto che viene pushato nell'array come oggetto
 		newContact() {
 			this.contacts.push({
 				name: this.newContactInput,
@@ -268,6 +276,7 @@ createApp({
 			this.classeNone = "d-none";
 			this.newContactInput = "";
 		},
+		// metodi per aggiungere o rimuovere classe
 		addClass() {
 			this.classeNone = "d-none";
 		},
