@@ -5,7 +5,6 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
-			none: "d-none",
 			selectedMessage: {
 				index: null,
 				sottoIndex: null,
