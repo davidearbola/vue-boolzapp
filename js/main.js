@@ -5,15 +5,20 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
+			none: "d-none",
+			selectedMessage: {
+				index: null,
+				sottoIndex: null,
+			},
 			stringaSearch: false,
 			inputSearchValue: null,
 			inputValue: "",
 			contactActive: 0,
-			me: { name: "Davide", avatar: "https://i.pravatar.cc/400" },
+			me: { name: "Davide", avatar: "./img/avatar_io.jpg" },
 			contacts: [
 				{
 					name: "Michele",
-					avatar: "https://i.pravatar.cc/300",
+					avatar: "./img/avatar_1.jpg",
 					visible: true,
 					messages: [
 						{
@@ -38,7 +43,7 @@ createApp({
 				},
 				{
 					name: "Fabio",
-					avatar: "https://i.pravatar.cc/310",
+					avatar: "./img/avatar_2.jpg",
 					visible: true,
 					messages: [
 						{
@@ -64,7 +69,7 @@ createApp({
 				},
 				{
 					name: "Samuele",
-					avatar: "https://i.pravatar.cc/320",
+					avatar: "./img/avatar_3.jpg",
 					visible: true,
 					messages: [
 						{
@@ -89,7 +94,7 @@ createApp({
 				},
 				{
 					name: "Alessandro B.",
-					avatar: "https://i.pravatar.cc/330",
+					avatar: "./img/avatar_4.jpg",
 					visible: true,
 					messages: [
 						{
@@ -108,7 +113,7 @@ createApp({
 				},
 				{
 					name: "Alessandro L.",
-					avatar: "https://i.pravatar.cc/340",
+					avatar: "./img/avatar_5.jpg",
 					visible: true,
 					messages: [
 						{
@@ -127,7 +132,7 @@ createApp({
 				},
 				{
 					name: "Claudia",
-					avatar: "https://i.pravatar.cc/350",
+					avatar: "./img/avatar_6.jpg",
 					visible: true,
 					messages: [
 						{
@@ -152,7 +157,7 @@ createApp({
 				},
 				{
 					name: "Federico",
-					avatar: "https://i.pravatar.cc/360",
+					avatar: "./img/avatar_7.jpg",
 					visible: true,
 					messages: [
 						{
@@ -173,7 +178,7 @@ createApp({
 				},
 				{
 					name: "Davide",
-					avatar: "https://i.pravatar.cc/370",
+					avatar: "./img/avatar_8.jpg",
 					visible: true,
 					messages: [
 						{
@@ -239,6 +244,18 @@ createApp({
 		},
 		lastMsg(elemento) {
 			return elemento.messages.length - 1;
+		},
+		selectMessage(index, sottoIndex) {
+			this.selectedMessage.index = index;
+			this.selectedMessage.sottoIndex = sottoIndex;
+		},
+		clearSelectedMessage() {
+			this.selectedMessage.index = null;
+			this.selectedMessage.sottoIndex = null;
+		},
+		deleteMessage(index, sottoIndex) {
+			this.contacts[index].messages.splice(sottoIndex, 1);
+			this.clearSelectedMessage();
 		},
 	},
 	// computed: {
