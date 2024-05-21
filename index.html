@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <!-- sezione contatti -->
-                        <div class="my_body_contact bg-white overflow-auto">
+                        <!-- <div class="my_body_contact bg-white overflow-auto">
                             <div v-for="elemento,i in contacts" @click="makeActive(i)" class="row m-0">
                                 <template v-if="elemento.visible == true">
                                     <div class="col-2 p-2">
@@ -89,9 +89,9 @@
                                     </div>
                                 </template>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- versione computed -->
-                        <!-- <div class="my_body_contact bg-white overflow-auto">
+                        <div class="my_body_contact bg-white overflow-auto">
                             <div v-for="elemento,i in filteredSearch" @click="makeActive(i)" class="row m-0">
                                 <div class="col-2 p-2">
                                     <img :src="elemento.avatar" alt="">
@@ -106,7 +106,7 @@
                                         class="my_text_hour">{{elemento.messages[lastMsg(elemento)].hour}}</span>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- colonna destra -->
                     <div class="col-8 h-100 p-0">
@@ -114,7 +114,7 @@
                         <div class="my_header_column">
                             <div class="row m-0 align-items-center justify-content-between">
                                 <div class="col-6 row">
-                                    <template v-for="elemento, i in contacts">
+                                    <template v-for="elemento, i in filteredSearch">
                                         <div v-if="i == contactActive" class="col-2 p-2">
                                             <img :src="elemento.avatar" alt="">
                                         </div>
@@ -135,7 +135,7 @@
                         </div>
                         <!-- body message -->
                         <div class="my_body_message overflow-auto p-4">
-                            <template v-for="elemento, index in contacts">
+                            <template v-for="elemento, index in filteredSearch">
                                 <template v-for="sottoElemento, sottoIndex in elemento.messages">
                                     <div v-if="index == contactActive"
                                         :class="{'justify-content-end': sottoElemento.status == 'sent'}"

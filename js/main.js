@@ -231,21 +231,22 @@ createApp({
 		// metodo per prendere l'orario corrente all'invio del messaggio
 		getNow() {
 			const today = new Date();
-			const time = today.getHours() + ":" + today.getMinutes();
-			return time;
+			const hours = String(today.getHours()).padStart(2, "0");
+			const minutes = String(today.getMinutes()).padStart(2, "0");
+			return `${hours}:${minutes}`;
 		},
-		// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati
-		searchContact() {
-			for (let i = 0; i < this.contacts.length; i++) {
-				this.contacts[i].visible = false;
-				this.stringaSearch = this.contacts[i].name
-					.toLowerCase()
-					.includes(this.inputSearchValue.toLowerCase());
-				if (this.stringaSearch == true) {
-					this.contacts[i].visible = true;
-				}
-			}
-		},
+		// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati(alternativa a computed)
+		// searchContact() {
+		// 	for (let i = 0; i < this.contacts.length; i++) {
+		// 		this.contacts[i].visible = false;
+		// 		this.stringaSearch = this.contacts[i].name
+		// 			.toLowerCase()
+		// 			.includes(this.inputSearchValue.toLowerCase());
+		// 		if (this.stringaSearch == true) {
+		// 			this.contacts[i].visible = true;
+		// 		}
+		// 	}
+		// },
 		// metodo per prendere l'ultimo elemento/oggetto di un array
 		lastMsg(elemento) {
 			return elemento.messages.length - 1;
@@ -262,8 +263,10 @@ createApp({
 		},
 		// metodo per eliminare dall'array il messaggio selezionato e quindi cancellarlo dalla chat
 		deleteMessage(index, sottoIndex) {
-			this.contacts[index].messages.splice(sottoIndex, 1);
-			this.clearSelectedMessage();
+			if (confirm("Sei sicuro di voler eliminare questo messaggio?")) {
+				this.contacts[index].messages.splice(sottoIndex, 1);
+				this.clearSelectedMessage();
+			}
 		},
 		// metodo per creare un nuovo contatto che viene pushato nell'array come oggetto
 		newContact() {
@@ -284,14 +287,18 @@ createApp({
 			this.classeNone = "";
 		},
 	},
-	// computed: {
-	// 	filteredSearch: function () {
-	// 		return this.contacts.filter((elemento) => {
-	// 			return elemento.name
-	// 				.toLowerCase()
-	// 				.match(this.inputSearchValue.toLowerCase());
-	// 		});
-	// 	},
-	// },
+	// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati
+	computed: {
+		filteredSearch() {
+			if (!this.inputSearchValue) {
+				return this.contacts;
+			}
+			return this.contacts.filter((contact) =>
+				contact.name
+					.toLowerCase()
+					.includes(this.inputSearchValue.toLowerCase())
+			);
+		},
+	},
 	mounted() {},
 }).mount("#app");
