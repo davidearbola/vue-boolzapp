@@ -1,41 +1,18 @@
-.my_div_bg {
-	width: 100%;
-	height: 100vh;
-	background: linear-gradient(to top, #dcdbd3 0% 80%, #409789 80%);
-}
-
-.my_div_container {
-	width: 1000px;
-	height: calc(100vh - 2rem);
-	margin: 0 auto;
-	border-radius: 10px;
+/* *************** COMMON STYLE ****************** */
+:root {
+	--height-header: 4rem;
+	--height-notify: 4rem;
+	--height-search: 3rem;
+	--my-blue: #8edafa;
+	--my-light-grey: #fafafa;
+	--header-bg: #eaeaea;
+	--my-light-green: #d5f9ba;
+	--my-white: #ffffff;
 }
 
 .my_header_column {
-	height: 4rem;
-	background-color: #eaeaea;
-}
-
-.my_h_4 {
-	height: 4rem;
-}
-
-.my_h_3 {
-	height: 3rem;
-}
-
-.my_body_contact {
-	height: calc(100% - 11rem);
-}
-
-.my_body_message {
-	height: calc(100% - 8rem);
-	background-image: url("../img/mine.jpg");
-}
-
-.my_footer_message {
-	height: 4rem;
-	background-color: #eaeaea;
+	height: var(--height-header);
+	background-color: var(--header-bg);
 }
 
 img {
@@ -61,38 +38,87 @@ span {
 }
 
 .my_bg_blue {
-	background-color: #8edafa;
+	background-color: var(--my-blue);
 }
 
 .my_bg_light_grey {
-	background-color: #fafafa;
+	background-color: var(--my-light-grey);
 }
 
 .my_bg_green {
-	background-color: #d5f9ba;
-}
-
-.my_div_delete {
-	background-color: white;
-	border: 1px solid grey;
-	border-radius: 10px;
-	padding: 1rem 2rem;
-	z-index: 1;
-}
-
-.my_icon_notify {
-	background-color: white;
-	border-radius: 50%;
+	background-color: var(--my-light-green);
 }
 
 .fa-bell-slash {
-	color: #8edafa;
+	color: var(--my-blue);
 }
 
 .my_underline {
 	text-decoration: underline;
 }
 
+.fa-xmark {
+	font-size: 3rem;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+/* *************** CONTAINER ****************** */
+.my_div_bg {
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(to top, #dcdbd3 0% 80%, #409789 80%);
+}
+
+.my_div_container {
+	width: 1000px;
+	height: calc(100vh - 2rem);
+	margin: 0 auto;
+	border-radius: 10px;
+}
+
+/* *************** COLONNA SINISTRA ****************** */
+.my_h_notify {
+	height: var(--height-notify);
+}
+
+.my_icon_notify {
+	background-color: var(--my-white);
+	border-radius: 50%;
+}
+
+.my_h_search {
+	height: var(--height-search);
+}
+
+.my_body_contact {
+	height: calc(
+		100% - var(--height-header) - var(--height-notify) -
+			var(--height-search)
+	);
+}
+
+/* *************** COLONNA DESTRA ****************** */
+.my_body_message {
+	height: calc(100% - (var(--height-header) * 2));
+	background-image: url("../img/mine.jpg");
+}
+
+.my_footer_message {
+	height: var(--height-header);
+	background-color: var(--header-bg);
+}
+
+.my_div_delete {
+	background-color: var(--my-white);
+	border: 1px solid var(--my-light-grey);
+	border-radius: 10px;
+	padding: 1rem 2rem;
+	z-index: 1;
+}
+
+/* *************** ADD CONTACT ****************** */
 .my_box_add_contact {
 	background-color: rgba(255, 255, 255, 0.555);
 	width: 100%;
@@ -107,15 +133,8 @@ span {
 #add_contact {
 	width: 400px;
 	height: 400px;
-	background-color: lightgrey;
+	background-color: var(--my-light-grey);
 	padding: 2rem;
 	text-align: center;
 	border-radius: 10px;
-}
-
-.fa-xmark {
-	font-size: 3rem;
-	position: absolute;
-	top: 20px;
-	right: 20px;
 }
