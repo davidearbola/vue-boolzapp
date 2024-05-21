@@ -236,17 +236,17 @@ createApp({
 			return `${hours}:${minutes}`;
 		},
 		// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati(alternativa a computed)
-		// searchContact() {
-		// 	for (let i = 0; i < this.contacts.length; i++) {
-		// 		this.contacts[i].visible = false;
-		// 		this.stringaSearch = this.contacts[i].name
-		// 			.toLowerCase()
-		// 			.includes(this.inputSearchValue.toLowerCase());
-		// 		if (this.stringaSearch == true) {
-		// 			this.contacts[i].visible = true;
-		// 		}
-		// 	}
-		// },
+		searchContact() {
+			for (let i = 0; i < this.contacts.length; i++) {
+				this.contacts[i].visible = false;
+				this.stringaSearch = this.contacts[i].name
+					.toLowerCase()
+					.includes(this.inputSearchValue.toLowerCase());
+				if (this.stringaSearch == true) {
+					this.contacts[i].visible = true;
+				}
+			}
+		},
 		// metodo per prendere l'ultimo elemento/oggetto di un array
 		lastMsg(elemento) {
 			return elemento.messages.length - 1;
@@ -288,17 +288,17 @@ createApp({
 		},
 	},
 	// metodo per fare la ricerca tramite input dei contatti e visualizzare solo quelli ricercati
-	computed: {
-		filteredSearch() {
-			if (!this.inputSearchValue) {
-				return this.contacts;
-			}
-			return this.contacts.filter((contact) =>
-				contact.name
-					.toLowerCase()
-					.includes(this.inputSearchValue.toLowerCase())
-			);
-		},
-	},
+	// computed: {
+	// 	filteredSearch() {
+	// 		if (!this.inputSearchValue) {
+	// 			return this.contacts;
+	// 		}
+	// 		return this.contacts.filter((contact) =>
+	// 			contact.name
+	// 				.toLowerCase()
+	// 				.includes(this.inputSearchValue.toLowerCase())
+	// 		);
+	// 	},
+	// },
 	mounted() {},
 }).mount("#app");
